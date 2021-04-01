@@ -1,5 +1,6 @@
 /jwt/target/
 /jwt-security/target/
+/spring-security/target
 
 ### STS ###
 .apt_generated
