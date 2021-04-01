@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RunController {
+public class MemberController {
 
-    @GetMapping("/hello")
+    @GetMapping("/login")
     public String hello(){
-        return "hello world";
+        return "login";
     }
 
 }
