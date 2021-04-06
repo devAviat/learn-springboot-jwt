@@ -1,0 +1,25 @@
+server:
+  port: 8080
+spring:
+  jpa:
+    database: h2
+    hibernate:
+      use-new-id-generator-mappings: on
+      ddl-auto: create
+    open-in-view: false
+    show-sql: true
+  thymeleaf:
+    cache: false
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    root: WARN
+    org.springframework.web: INFO
+    org.springframework.security: INFO
