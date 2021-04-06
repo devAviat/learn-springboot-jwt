@@ -1,8 +1,14 @@
 package com.learn.security.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -20,5 +26,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults());
     }
+
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        // ensure the passwords are encoded properly
+        User.UserBuilder user = User.withDefaultPasswordEncoder();
+
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(user
+                .username("user")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER")
+                .build()
+        );
+        manager.createUser(user
+                .username("admin")
+                .password(passwordEncoder().encode("password"))
+                .roles("USER", "ADMIN")
+                .build()
+        );
+
+        return manager;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
 }
