@@ -21,10 +21,10 @@ public class MemberService {
     @Transactional
     public void login(String name, String password) {
 
-        Member member = this.findMember(name, password);
+        Member member = this.checkMember(name, password);
     }
 
-    public Member findMember(String name, String password) {
+    public Member checkMember(String name, String password) {
         return memberRepository.findByName(name);
     }
 

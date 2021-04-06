@@ -50,7 +50,7 @@ public class MemberController {
                                @RequestParam("password") String password) {
 
         //memberService.login(id, password);
-        Member member = memberService.findMember(id, password);
+        Member member = memberService.checkMember(id, password);
         return "redirect:/member/main";
     }
 
