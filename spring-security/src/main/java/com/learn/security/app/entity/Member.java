@@ -5,22 +5,24 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
+import static javax.persistence.EnumType.*;
 
 @Entity
 @Data
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
-
     @Id
     @GeneratedValue
     private Long member_id;
 
     private String name;
+
     private String password;
+
+    @Enumerated(STRING)
     private Role role;
 
     @Builder

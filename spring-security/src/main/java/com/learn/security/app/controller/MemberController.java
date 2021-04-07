@@ -20,57 +20,38 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    /**
-     * 0.로그인 인증이 끝난 메인화면
-     *
-     * @return
-     */
+
+    //메인
     @GetMapping("/main")
     public String user_main() {
-        return "/main";
+        return "/login/main";
     }
 
-    /**
-     * 1-1로그인 폼
-     *
-     * @return
-     */
-    @GetMapping("/login-form")
+    //등록폼
+    @GetMapping("/login")
     public String login_form() {
-        return "loginForm";
+        return "login/register";
     }
 
-    /**
-     * 1-2로그인 실행
-     *
-     * @return
-     */
-    @PostMapping("/login-action")
+    //로그인처리
+    @PostMapping("/login")
     public String login_action(@RequestParam("id") String id,
                                @RequestParam("password") String password) {
 
-        //memberService.login(id, password);
         Member member = memberService.checkMember(id, password);
         return "redirect:/member/main";
     }
 
-    /**
-     * 1-3회원가입처리
-     *
-     * @param id
-     * @param password
-     * @return
-     */
-    @PostMapping("/signIn")
-    public String signIn(@RequestParam("id") String id,
+
+    //등록처리
+    @PostMapping("/sign-in")
+    public String signIn(@RequestParam("name") String name,
                          @RequestParam("password") String password) {
         log.info("init Controller");
-        log.info("id  ::{}", id);
+        log.info("name  ::{}", name);
         log.info("password  ::{}", password);
 
-        Long member = memberService.createMember(id, password);
-        return null;
+        Long member = memberService.createMember(name, password);
+        return "redirect:/member/main";
     }
-
-
 }
