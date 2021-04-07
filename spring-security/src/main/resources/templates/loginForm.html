@@ -10,34 +10,34 @@
     <title>Document</title>
 </head>
 <body>
-<form action="" method="post" id="form">
-    <label id="id">
-        <input type="text" name="id" placeholder="id">
+<form action="" method="POST" id="form">
+    <label id="name">
+        <input type="text" name="name" placeholder="name">
     </label>
     <label id="password" th:value="password">
         <input type="text" name="password" placeholder="password">
     </label>
-    <button type="button" id="login">로그인</button>
-    <button type="button" id="signIn">회원가입</button>
+    <button type="button" id="btn_login">로그인</button>
+    <button type="button" id="btn_signIn">회원가입</button>
 </form>
 </body>
 
 <script>
-    var btn_Id = document.getElementById("login");
-    var btn_SignIn = document.getElementById("signIn");
-    var frm = document.getElementById("form");
+    let btn_Id = document.getElementById("btn_login");
+    let btn_SignIn = document.getElementById("btn_signIn");
+    let frm = document.getElementById("form");
 
     btn_Id.addEventListener("click", function(event){
         //event.preventDefault();
         //return false;
-        frm.setAttribute("action", "/member/login-action");
+        frm.setAttribute("action", "/member/login");
         frm.submit();
     });
 
     btn_SignIn.addEventListener("click", function(event){
         //event.preventDefault();
         //return false;
-        frm.setAttribute("action", "/member/signIn");
+        frm.setAttribute("action", "/member/new");
         frm.submit();
     });
 
