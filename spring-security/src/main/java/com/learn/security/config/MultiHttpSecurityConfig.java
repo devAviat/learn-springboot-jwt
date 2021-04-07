@@ -1,6 +1,5 @@
 package com.learn.security.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,7 +38,7 @@ public class MultiHttpSecurityConfig {
         }
     }
 
-    @Configuration
+    /*@Configuration
     @Order(3)
     public static class UserConfigurationAdaptor extends WebSecurityConfigurerAdapter {
         protected void configure(HttpSecurity http) throws Exception {
@@ -51,6 +50,6 @@ public class MultiHttpSecurityConfig {
                     )
                     .httpBasic();
         }
-    }
+    }*/
 
 }
